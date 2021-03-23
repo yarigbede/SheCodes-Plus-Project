@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/6e5ae0feb7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <form id="form-search-city">
+                <!-- //search bar -->
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control search-bar"
+                    id="enter-city"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Enter your city"
+                  />
+                </div>
+              </form>
+            </div>
+
+            <!--// search button -->
+            <div class="col-2">
+              <form id="form-search-button">
+                <input class="search-button" type="submit" value="🔍" />
+              </form>
+            </div>
+
+            <!--// search button for current location -->
+            <div class="col-2">
+              <button
+                id="current-location"
+                type="button"
+                class="btn btn-success"
+              >
+                📌
+              </button>
+            </div>
+          </div>
+
+          <!-- Second row, general info -->
+          <br />
+          <div class="row row-2">
+            <div class="col-8 City-Time">
+              <div class="row Time-block">
+                <p class="Time" id="date-and-time">Time : 15.10</p>
+              </div>
+              <div class="row">
+                <h1 class="city" id="city">Scotland</h1>
+              </div>
+            </div>
+            <div class="col-4 stats">
+              <div class="row">
+                <p class="precipitation">Precipitation: 10%</p>
+              </div>
+              <div class="row">
+                <p class="wind">Wind: 5m/h</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Day Column -->
+            <div class="col-3 Today-col">
+              <div class="row">
+                <h2 class="Today">TODAY</h2>
+              </div>
+              <div class="row">
+                <i class="fas fa-cloud-showers-heavy today-icon"></i>
+              </div>
+              <div class="row Temp-today">
+                <p id="temp-today">10</p>
+                <a href="#" class="units" id="celsius"> °C / </a>
+                <a href="#" class="units" id="fahrenheit"> °F </a>
+              </div>
+            </div>
+
+            <div class="col-3 middle-border">
+              <div class="row">
+                <i class="fas fa-cloud-showers-heavy day-icon"></i>
+              </div>
+              <div class="row day">
+                <p class="style-border"><strong>SUN</strong> | 8°C</p>
+              </div>
+            </div>
+
+            <div class="col-3 middle-border">
+              <div class="row">
+                <i class="fas fa-cloud-showers-heavy day-icon"></i>
+              </div>
+              <div class="row day">
+                <p class="style-border"><strong>MON</strong> | 8°C</p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="row">
+                <i class="fas fa-cloud-showers-heavy day-icon"></i>
+              </div>
+              <div class="row day">
+                <p class="style-border"><strong>SUN</strong> | 8°C</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

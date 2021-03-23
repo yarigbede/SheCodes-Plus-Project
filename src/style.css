@@ -1,0 +1,111 @@
+p {
+  margin-bottom: 0;
+}
+
+.container {
+  margin: 100px auto;
+  width: 60%;
+}
+
+.card-body {
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+  width: auto;
+  color: #006ec5;
+  border: 4px groove #1ab2a8;
+}
+
+.city {
+  margin: 0;
+  font-weight: large;
+  font-weight: bold;
+  font-size: 70px;
+  margin-left: 40%;
+}
+
+.City-Time {
+  padding: 0;
+}
+
+.day {
+  margin-left: 20px;
+  font-size: 20px;
+  text-align: right;
+}
+.day-icon {
+  margin: 20% auto;
+  font-size: 80px;
+}
+
+.fas {
+  color: #83a4bd;
+}
+.middle-border {
+  border-right: 5px double #1ab2a8;
+}
+
+.row-2 {
+  border-bottom: 5px double #1ab2a8;
+}
+.search-bar {
+  border-width: 2px;
+  border-color: #1ab2a8;
+}
+.search-button {
+  background-color: white;
+  border-color: #1ab2a8;
+  padding: 5px 30px;
+}
+
+.style-border {
+  border-top: 3px solid #1ab2a8;
+}
+
+.stats {
+  margin: 3% 0;
+  padding-left: 5%;
+  border-left: 5px solid #1ab2a8;
+}
+
+.Temp-today {
+  margin-top: 25%;
+  margin-left: 20%;
+  font-size: 28px;
+  text-align: center;
+  line-height: 0;
+  font-weight: 800;
+}
+
+.Time {
+  font-size: 18px;
+  margin-left: 74%;
+  margin-bottom: 0;
+}
+
+.Time-block {
+  margin-bottom: 0;
+}
+
+.Today {
+  font-weight: 800;
+  line-height: 1em;
+  margin: 0 auto;
+}
+
+.Today-col {
+  border-right: 5px double #1ab2a8;
+}
+
+.units {
+  font-size: small;
+  padding-left: 5px;
+}
+
+.wind {
+  margin-bottom: 10px;
+}
+
+.today-icon {
+  font-size: 80px;
+  margin: 5% auto 0;
+}

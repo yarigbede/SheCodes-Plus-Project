@@ -21,6 +21,13 @@ formatDate();
 
 // display Temp of searched location using API
 function displayCitySearchTemp(response){
+  console.log(response.data);
+  
+  // display city name in H1
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.name;
+
+  //display current temp in "today" section
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
   currentTempElement.innerHTML = currentTemp;
@@ -52,13 +59,10 @@ locationButton.addEventListener("click", displayLocalTemp);
 
 
 
-function displayCity(event){
-  // Display city information in H1 element
+function callAPI(event){  
+    // Display city information in H1 element
   event.preventDefault();
   let input = document.querySelector("#enter-city");
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = `${input.value.trim()}`;
-  
   //API request for weather info
   let apiKey = "b726c0c3e5e5bc647284ff0039ec9b4a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value.trim()}&appid=${apiKey}&units=metric`;
@@ -69,8 +73,8 @@ function displayCity(event){
 // display info is search button selected or user presses enter in text field
 let form = document.querySelector("#form-search-city");
 let formButton = document.querySelector("#form-search-button");
-form.addEventListener("submit", displayCity);
-formButton.addEventListener("submit", displayCity);  
+form.addEventListener("submit", callAPI);
+formButton.addEventListener("submit", callAPI);  
 
 // // change units 
 // function toCelsius(event) {

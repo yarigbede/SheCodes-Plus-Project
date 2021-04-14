@@ -9,7 +9,7 @@ footer {
 
 .container {
   margin: 100px auto;
-  width: 60%;
+  max-width: 60%;
 }
 
 .card-body {
@@ -20,16 +20,18 @@ footer {
   border: 4px groove #1ab2a8;
 }
 
-.city {
-  margin: 0;
-  font-weight: large;
-  font-weight: bold;
-  font-size: 70px;
-  margin-left: 40%;
+.city-and-time {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-right: 10px;
+  text-align: right;
+  list-style-type: none;
 }
 
-.City-Time {
-  padding: 0;
+.city {
+  font-weight: large;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 .day {
@@ -45,13 +47,29 @@ footer {
 .fas {
   color: #83a4bd;
 }
+
+.fa-map-pin {
+  color: #1ab2a8;
+}
 .middle-border {
   border-right: 5px double #1ab2a8;
+}
+
+.precipitation-and-wind {
+  text-decoration: none;
+  font-size: 18px;
+  /* font-weight: bold; make this part of js */
+  text-align: left;
+  list-style: none;
+  margin-left: 15px;
+  margin-top: 20px;
+  padding: 0;
 }
 
 .row-2 {
   border-bottom: 5px double #1ab2a8;
 }
+
 .search-bar {
   border-width: 2px;
   border-color: #1ab2a8;
@@ -66,10 +84,10 @@ footer {
   border-top: 3px solid #1ab2a8;
 }
 
-.stats {
-  margin: 3% 0;
-  padding-left: 5%;
-  border-left: 5px solid #1ab2a8;
+.stats-divider {
+  border-right: 5px solid #1ab2a8;
+  margin: 0;
+  padding: 0;
 }
 
 .Temp-today {
@@ -79,12 +97,6 @@ footer {
   text-align: center;
   line-height: 0;
   font-weight: 800;
-}
-
-.Time {
-  font-size: 18px;
-  margin-left: 74%;
-  margin-bottom: 0;
 }
 
 .Time-block {
@@ -107,7 +119,7 @@ footer {
 }
 
 .wind {
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .today-icon {

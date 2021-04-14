@@ -16,9 +16,7 @@ return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
 // display Temp of searched location using API
-function displayCitySearchTemp(response){
-  console.log(response.data);  
-  
+function displayCitySearchTemp(response){  
   // display city name in H1
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;

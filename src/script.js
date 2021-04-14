@@ -1,22 +1,20 @@
 // Displaying date and time info 
-function formatDate() {
-let now = new Date(); 
+function formatDate(timestamp) {
+  // timestamp = no. milliseconds from 1/1/1970
+let date = new Date(timestamp); 
 
 // date and time info 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let weekDay = days[now.getDay()];
-let hour = now.getHours(); 
-let minute = now.getMinutes();
+let weekDay = days[date.getDay()];
+let hour = date.getHours(); 
+let minute = date.getMinutes();
 if (minute < 10) {
   minute = `0${minute}`;
 }
 
-// display on screen
-let date = document.querySelector("#date-and-time");
-date.innerHTML = `${weekDay} ${hour}:${minute}`;
+return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
-formatDate();
 
 
 // display Temp of searched location using API
@@ -31,6 +29,10 @@ function displayCitySearchTemp(response){
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
   currentTempElement.innerHTML = currentTemp;
+
+  // find current time 
+  let dateElement = document.querySelector("#date-and-time");
+  dateElement.innerHTML = formatDate(response.data.dt *1000);
 }
 
 // display temp of search location 

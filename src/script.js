@@ -15,11 +15,9 @@ if (minute < 10) {
 return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
-
-
 // display Temp of searched location using API
 function displayCitySearchTemp(response){
-  console.log(response.data);
+  console.log(response.data);  
   
   // display city name in H1
   let cityElement = document.querySelector("#city");
@@ -33,6 +31,15 @@ function displayCitySearchTemp(response){
   // find current time 
   let dateElement = document.querySelector("#date-and-time");
   dateElement.innerHTML = formatDate(response.data.dt *1000);
+
+  // display wind speed and precipitation 
+  let precipitationElement = document.querySelector("#stat-humidity");
+  let windSpeedElement = document.querySelector("#stat-wind-speed");
+  let windSpeed = Math.round(response.data.wind.speed);
+  let humidity = response.data.main.humidity;
+ // precipitationElement.innerHTML = re
+  precipitationElement.innerHTML = `HUMIDITY: ${humidity}%`
+  windSpeedElement.innerHTML = `WIND SPEED: ${windSpeed} km/h`;
 }
 
 // display temp of search location 

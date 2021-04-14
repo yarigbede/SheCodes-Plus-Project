@@ -1,10 +1,20 @@
+footer {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
 p {
   margin-bottom: 0;
 }
 
-footer {
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -34,23 +44,33 @@ footer {
   font-size: 40px;
 }
 
-.day {
+/* .day {
   margin-left: 20px;
   font-size: 20px;
   text-align: right;
-}
+} */
+
 .day-icon {
-  margin: 20% auto;
+  margin: 46% auto 30%;
   font-size: 80px;
 }
 
 .fas {
   color: #83a4bd;
+  font-size: 80px;
+  display: block;
+  text-align: center;
 }
 
 .fa-map-pin {
   color: #1ab2a8;
+  font-size: 25px;
 }
+
+.forecast-day {
+  font-size: 25px;
+}
+
 .middle-border {
   border-right: 5px double #1ab2a8;
 }
@@ -82,6 +102,8 @@ footer {
 
 .style-border {
   border-top: 3px solid #1ab2a8;
+  display: block;
+  text-align: center;
 }
 
 .stats-divider {
@@ -113,9 +135,18 @@ footer {
   border-right: 5px double #1ab2a8;
 }
 
+.todayTemp {
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .units {
   font-size: small;
-  padding-left: 5px;
+  padding: 0;
+  position: relative;
+  bottom: 10px;
 }
 
 .wind {
@@ -123,6 +154,5 @@ footer {
 }
 
 .today-icon {
-  font-size: 80px;
-  margin: 5% auto 0;
+  margin: 20% auto;
 }

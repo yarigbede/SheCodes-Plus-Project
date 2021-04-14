@@ -77,8 +77,8 @@
             </div>
             <div class="col-4 stats">
               <ul class="precipitation-and-wind">
-                <li class="precipitation">PRECIPITATION: 10%</li>
-                <li class="wind">WIND SPEED: 5 m/h </li>           
+                <li class="precipitation" id="stat-humidity"></li>
+                <li class="wind" id="stat-wind-speed"> </li>           
               </ul>              
             </div>
           </div>
@@ -86,43 +86,54 @@
           <div class="row">
             <!-- Day Column -->
             <div class="col-3 Today-col">
-              <div class="row">
-                <h2 class="Today">TODAY</h2>
-              </div>
-              <div class="row">
-                <i class="fas fa-cloud-showers-heavy today-icon"></i>
-              </div>
-              <div class="row Temp-today">
-                <p id="temp-today">10</p>
-                <a href="#" class="units" id="celsius"> °C / </a>
-                <a href="#" class="units" id="fahrenheit"> °F </a>
-              </div>
+              <h2 class="Today">TODAY</h2>
+              <ul class="weatherInfoToday">
+                <li>
+                  <i class="fas fa-cloud-showers-heavy today-icon"></i>
+                </li>
+                <li>
+                  <p class="todayTemp" id="temp-today">
+                    10 
+                    <a href="#" class="units" id="celsius"> °C / </a>
+                    <a href="#" class="units" id="fahrenheit"> °F </a>
+                  </p>                  
+                </li>
+              </ul>
             </div>
 
             <div class="col-3 middle-border">
-              <div class="row">
-                <i class="fas fa-cloud-showers-heavy day-icon"></i>
-              </div>
-              <div class="row day">
-                <p class="style-border"><strong>SUN</strong> | 8°C</p>
-              </div>
+              <ul>
+                <li>
+                  <i class="fas fa-cloud-showers-heavy day-icon"></i>
+                </li>
+                <li>
+                  <p class="style-border forecast-day"><strong>SUN</strong> | 8°C</p>
+                </li>
+              </ul>
             </div>
 
             <div class="col-3 middle-border">
-              <div class="row">
-                <i class="fas fa-cloud-showers-heavy day-icon"></i>
-              </div>
-              <div class="row day">
-                <p class="style-border"><strong>MON</strong> | 8°C</p>
-              </div>
+              <ul>
+                <li>
+                  <i class="fas fa-cloud-showers-heavy day-icon"></i>
+                </li>
+                <li>
+                  <p class="style-border forecast-day"><strong>SUN</strong> | 8°C</p>
+                </li>
+              </ul>
             </div>
 
             <div class="col-3">
-              <div class="row">
-                <i class="fas fa-cloud-showers-heavy day-icon"></i>
-              </div>
-              <div class="row day">
-                <p class="style-border"><strong>SUN</strong> | 8°C</p>
+              <ul>
+                <li>
+                  <i class="fas fa-cloud-showers-heavy day-icon"></i>
+                </li>
+                <li>
+                  <p class="style-border forecast-day"><strong>SUN</strong> | 8°C</p>
+                </li>
+              </ul>
+            </div>
+
               </div>
             </div>
           </div>

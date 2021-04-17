@@ -7,6 +7,11 @@ h2 {
   text-align: center;
 }
 
+img {
+  display: block;
+  margin: 0 auto;
+}
+
 p {
   margin-bottom: 0;
 }
@@ -15,6 +20,36 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.units {
+  bottom: 10px;
+  font-size: small;
+  padding: 0;
+  position: relative;
+}
+
+.units:hover {
+  text-decoration: none;
+}
+
+.active {
+  color: black;
+  cursor: default;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.active:hover {
+  cursor: default;
+}
+
+.inactive {
+  color: #006ec5;
+}
+
+.inactive:hover {
+  cursor: pointer;
 }
 
 .container {
@@ -72,7 +107,6 @@ ul {
 .precipitation-and-wind {
   text-decoration: none;
   font-size: 18px;
-  /* font-weight: bold; make this part of js */
   text-align: left;
   list-style: none;
   margin-left: 15px;
@@ -85,8 +119,8 @@ ul {
 }
 
 .search-bar {
-  border-width: 2px;
   border-color: #1ab2a8;
+  border-width: 2px;
 }
 .search-button {
   background-color: white;
@@ -107,12 +141,12 @@ ul {
 }
 
 .Temp-today {
-  margin-top: 25%;
-  margin-left: 20%;
+  font-weight: 800;
   font-size: 28px;
   text-align: center;
   line-height: 0;
-  font-weight: 800;
+  margin-left: 20%;
+  margin-top: 25%;
 }
 
 .Time-block {
@@ -134,17 +168,11 @@ ul {
 }
 
 .todayTemp {
-  display: block;
+  display: inline-block;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-}
-
-.units {
-  font-size: small;
-  padding: 0;
-  position: relative;
-  bottom: 10px;
+  padding-left: 20%;
 }
 
 .wind {

@@ -129,6 +129,10 @@ ul {
   border-right: 5px double #1ab2a8;
 }
 
+.today-icon {
+  margin: 20% auto;
+}
+
 .todayTemp {
   display: block;
   font-size: 30px;
@@ -147,6 +151,8 @@ ul {
   margin: 0;
 }
 
-.today-icon {
-  margin: 20% auto;
+.weatherDescription {
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: center;
 }

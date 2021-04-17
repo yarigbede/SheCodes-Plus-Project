@@ -16,7 +16,9 @@ return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
 // display Temp of searched location using API
-function displayCitySearchTemp(response){  
+function displayCitySearchTemp(response){
+  console.log(response.data);
+  console.log(response.data.weather[0].icon);
   // display city name in H1
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
@@ -24,7 +26,17 @@ function displayCitySearchTemp(response){
   //display current temp in "today" section
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
-  currentTempElement.innerHTML = currentTemp;
+  currentTempElement.innerHTML = `${currentTemp}°C`;
+
+  // Display weather description and icon 
+  let todayWeatherDescription = response.data.weather[0].description;
+  let todayWeatherDescriptionElement = document.querySelector("#weather-description-current");
+  todayWeatherDescriptionElement.innerHTML = todayWeatherDescription;
+
+  let iconID = response.data.weather[0].icon;
+  let weatherTodayIcon = document.querySelector("#weather-icon-today");
+  weatherTodayIcon.setAttribute( "src",`http://openweathermap.org/img/wn/${iconID}@2x.png`);
+  
 
   // find current time 
   let dateElement = document.querySelector("#date-and-time");
@@ -35,6 +47,7 @@ function displayCitySearchTemp(response){
   let windSpeedElement = document.querySelector("#stat-wind-speed");
   let windSpeed = Math.round(response.data.wind.speed);
   let humidity = response.data.main.humidity;
+
  // precipitationElement.innerHTML = re
   precipitationElement.innerHTML = `HUMIDITY: ${humidity}%`
   windSpeedElement.innerHTML = `WIND SPEED: ${windSpeed} km/h`;
@@ -44,13 +57,12 @@ function displayCitySearchTemp(response){
 function displayTempCurrentLocation(response) {
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
-  currentTempElement.innerHTML = currentTemp;
+  currentTempElement.innerHTML = `${currentTemp}°C`;
  }
 
 function displayCoords(position){
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  console.log(`${lat}, ${lon}`);
   let apiKey ="b726c0c3e5e5bc647284ff0039ec9b4a";
   let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTempCurrentLocation);

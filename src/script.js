@@ -15,19 +15,44 @@ if (minute < 10) {
 return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
-// display Temp of searched location using API
-function displayCitySearchTemp(response){
-  console.log(response.data);
-  console.log(response.data.weather[0].icon);
+// HTML for forecast
+function displayforecast(){
+  let forecastElement = document.querySelector("#forecast-replicate");
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  let forecastHTML = ""; 
+  days.forEach(function(days){
+  forecastHTML = forecastHTML + `
+  <div class="row">
+    <ul class="forecast">
+      <li>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+      </li>
+      <li class="forecastTemp">
+        <span class= "forecastHigh" id="forecast-temp-high">
+          10° /
+        </span>
+        <span class="forecastLow" id="forecast-temp-low">
+          12°
+        </span>
+      </li>
+      <li>
+        <p class="style-border forecast-day"><strong>${days}</strong></p>
+      </li>
+    </ul>
+  </div> `;
+  })
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayforecast();
+
+// returns info aside from temperature for daily API call 
+function displayInfo (response){
   // display city name in H1
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
-
-  //display current temp in "today" section
-  let currentTemp = Math.round(response.data.main.temp);
-  let currentTempElement = document.querySelector("#temp-today");
-  currentTempElement.innerHTML = `${currentTemp}`;
-  celsiusTemp = currentTemp; // store celsius temp in global variable (for conversion to Fahrenheit)
 
   // Display weather description and icon 
   let todayWeatherDescription = response.data.weather[0].description;
@@ -38,7 +63,6 @@ function displayCitySearchTemp(response){
   let weatherTodayIcon = document.querySelector("#weather-icon-today");
   weatherTodayIcon.setAttribute( "src",`http://openweathermap.org/img/wn/${iconID}@2x.png`);
   
-
   // find current time 
   let dateElement = document.querySelector("#date-and-time");
   dateElement.innerHTML = formatDate(response.data.dt *1000);
@@ -53,39 +77,27 @@ function displayCitySearchTemp(response){
   windSpeedElement.innerHTML = `WIND SPEED: ${windSpeed} km/h`;
 }
 
-// display temp of search location 
-function displayTempCurrentLocation(response) {
-  // display city name in H1
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.name;
+// display Temp of searched location using API
+function displayCitySearchTemp(response){
+  console.log(response.data);
+  console.log(response.data.weather[0].icon);
 
+  //display current temp in "today" section
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
   currentTempElement.innerHTML = `${currentTemp}`;
   celsiusTemp = currentTemp; // store celsius temp in global variable (for conversion to Fahrenheit)
+  displayInfo(response);
+}
 
-  // Display weather description and icon 
-  let todayWeatherDescription = response.data.weather[0].description;
-  let todayWeatherDescriptionElement = document.querySelector("#weather-description-current");
-  todayWeatherDescriptionElement.innerHTML = todayWeatherDescription;
+// display temp of search location 
+function displayTempCurrentLocation(response) {
+   let currentTemp = Math.round(response.data.main.temp);
+  let currentTempElement = document.querySelector("#temp-today");
+  currentTempElement.innerHTML = `${currentTemp}`;
+  celsiusTemp = currentTemp; // store celsius temp in global variable (for conversion to Fahrenheit)
 
-  let iconID = response.data.weather[0].icon;
-  let weatherTodayIcon = document.querySelector("#weather-icon-today");
-  weatherTodayIcon.setAttribute( "src",`http://openweathermap.org/img/wn/${iconID}@2x.png`);
-  
-
-  // find current time 
-  let dateElement = document.querySelector("#date-and-time");
-  dateElement.innerHTML = formatDate(response.data.dt *1000);
-
-  // display wind speed and precipitation 
-  let precipitationElement = document.querySelector("#stat-humidity");
-  let windSpeedElement = document.querySelector("#stat-wind-speed");
-  let windSpeed = Math.round(response.data.wind.speed);
-  let humidity = response.data.main.humidity;
-
-  precipitationElement.innerHTML = `HUMIDITY: ${humidity}%`
-  windSpeedElement.innerHTML = `WIND SPEED: ${windSpeed} km/h`
+  displayInfo(response);
  }
 
 function displayCoords(position){
@@ -103,8 +115,6 @@ function displayLocalTemp(event){
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", displayLocalTemp);
-
-
 
 function callAPI(event){  
     // Display city information in H1 element

@@ -84,20 +84,28 @@ ul {
   font-size: 80px;
 }
 
-.fas {
-  color: #83a4bd;
-  font-size: 80px;
-  display: block;
+.fa-search-location {
   text-align: center;
+  color: white;
+  font-size: 22px;
 }
 
-.fa-map-pin {
-  color: #1ab2a8;
-  font-size: 25px;
+.forecast {
+  margin: 30% 25%;
 }
-
 .forecast-day {
-  font-size: 25px;
+  font-size: 20px;
+  margin: 0 20%;
+}
+
+.forecastTemp {
+  text-align: center;
+  font-weight: bold;
+}
+
+.forecastLow {
+  color: #1ab2a8;
+  opacity: 40%;
 }
 
 .middle-border {

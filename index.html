@@ -40,6 +40,7 @@
                     aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-default"
                     placeholder="Enter your city"
+                    autocomplete="off"
                   />
                 </div>
               </form>
@@ -85,22 +86,25 @@
 
           <div class="row">
             <!-- Day Column -->
-            <div class="col-3 nowForecast">
+            <div class="currentInfoSection style-border-current">
               <h2 class="Now">NOW</h2>
-              <ul class="weatherInfoToday">
-                <li>
-                  <img src="#" alt="" id="weather-icon-today">
-                </li>
-                <li class="weatherDescription" id="weather-description-current">
-                </li>
-                <li class="todayTemp" id="temp-today">           
-                </li>
-                <a href="#" class="units active" id="celsius"> °C |</a>
-                <a href="#" class="units inactive" id="fahrenheit"> °F </a>                 
-              </ul>
+              <section>
+                <ul class="weatherInfoToday">
+                  <li>
+                    <img src="#" alt="" id="weather-icon-today">
+                  </li>
+                  <li class="weatherDescription" id="weather-description-current">
+                  </li>
+                  <li class="todayTemp" id="temp-today">           
+                  </li>
+                  <a href="#" class="units active" id="celsius"> °C |</a>
+                  <a href="#" class="units inactive" id="fahrenheit"> °F </a>                 
+                </ul>
+              </section>
             </div>
 
-            <div class="row" id="forecast-replicate">
+            
+            <div class="forecastSection" id="forecast-replicate">
             </div>
               </div>
             </div>

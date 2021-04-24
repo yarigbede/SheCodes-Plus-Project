@@ -26,9 +26,14 @@ ul {
   padding: 0;
 }
 
+.btn-success {
+  padding: 6% 30%;
+}
+
 .nowForecast {
   display: inline;
 }
+
 .units {
   bottom: 10px;
   font-size: small;
@@ -60,7 +65,7 @@ ul {
 }
 
 .container {
-  margin: 100px auto;
+  margin: 80px auto;
   max-width: 60%;
 }
 
@@ -74,8 +79,8 @@ ul {
 
 .city-and-time {
   font-size: 18px;
-  margin-top: 20px;
-  margin-right: 10px;
+  margin-top: 2%;
+  margin-right: 5%;
   text-align: right;
   list-style-type: none;
 }
@@ -84,6 +89,11 @@ ul {
   font-weight: large;
   font-weight: bold;
   font-size: 40px;
+}
+
+.currentInfoSection {
+  padding-left: 0;
+  width: 30%;
 }
 
 .day-icon {
@@ -120,6 +130,17 @@ ul {
   text-align: center;
 }
 
+.forecastSection {
+  width: 70%;
+}
+
+.forecastTitle {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+
 .middle-border {
   border-right: 5px double #1ab2a8;
 }
@@ -129,8 +150,8 @@ ul {
   font-size: 18px;
   text-align: left;
   list-style: none;
-  margin-left: 15px;
-  margin-top: 20px;
+  margin-left: 2%;
+  margin-top: 10%;
   padding: 0;
 }
 
@@ -142,14 +163,21 @@ ul {
   border-color: #1ab2a8;
   border-width: 2px;
 }
+
 .search-button {
   background-color: white;
   border-color: #1ab2a8;
-  padding: 5px 30px;
+  padding: 6% 30%;
 }
 
 .style-border {
   border-top: 3px solid #1ab2a8;
+  display: block;
+  text-align: center;
+}
+
+.style-border-current {
+  border-right: 3px solid #1ab2a8;
   display: block;
   text-align: center;
 }
@@ -176,7 +204,7 @@ ul {
 .Now {
   font-weight: 800;
   line-height: 1em;
-  margin: 15px auto 0px;
+  margin: 15% auto 0;
 }
 
 .Today-col {
@@ -192,7 +220,7 @@ ul {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  padding-left: 20%;
+  padding-left: 25%;
 }
 
 .wind {

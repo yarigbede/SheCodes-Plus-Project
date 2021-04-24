@@ -26,7 +26,6 @@ function formatForecastDate(timestamp){
 
 // HTML for forecast
 function displayforecast(response){
-  console.log(response.data.daily);
   let forecast = response.data.daily; // api section for daily forecast 
   let forecastElement = document.querySelector("#forecast-replicate");
    // for HTML "section" used as using col results in bad format as it is on the same row as the current weather temp
@@ -64,7 +63,6 @@ function callForecastAPI(coordinates) {
   let lon = coordinates.lon;
   let apiKey ="b726c0c3e5e5bc647284ff0039ec9b4a";
   let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  console.log(apiForecastUrl);
   axios.get(apiForecastUrl).then(displayforecast);
 }
 
@@ -100,8 +98,6 @@ function displayInfo (response){
 
 // display Temp of searched location using API
 function displayCitySearchTemp(response){
-  console.log(response.data.coord);
-
   //display current temp in "today" section
   let currentTemp = Math.round(response.data.main.temp);
   let currentTempElement = document.querySelector("#temp-today");
@@ -136,6 +132,7 @@ function displayLocalTemp(event){
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", displayLocalTemp);
 
+// current API
 function callAPI(event){  
     // Display city information in H1 element
   event.preventDefault();
@@ -146,6 +143,16 @@ function callAPI(event){
 
   axios.get(apiUrl).then(displayCitySearchTemp); 
 }
+
+// current API Load page with London weather info
+function callAPIStartPage(){  
+  //API request for weather info
+  let apiKey = "b726c0c3e5e5bc647284ff0039ec9b4a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayCitySearchTemp); 
+}
+
+window.onload = callAPIStartPage();
 
 // unit converter 
 function toFahrenheit(event) {

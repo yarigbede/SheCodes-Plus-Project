@@ -15,38 +15,56 @@ if (minute < 10) {
 return `Updated: ${weekDay} ${hour}:${minute}`;
 }
 
-// HTML for forecast
-function displayforecast(){
-  let forecastElement = document.querySelector("#forecast-replicate");
-  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+function formatForecastDate(timestamp){
+  let date = new Date(timestamp); 
 
+  // date and time info 
+  let days = ["SUN", "MON", "TUE", "WED","THU","FRI","SAT"];
+  let weekDay = days[date.getDay()];
+  return `${weekDay}`;
+}
+
+// HTML for forecast
+function displayforecast(response){
+  console.log(response.data.daily);
+  let forecast = response.data.daily; 
+  let forecastElement = document.querySelector("#forecast-replicate");
+  
   let forecastHTML = ""; 
-  days.forEach(function(days){
-  forecastHTML = forecastHTML + `
-  <div class="row">
-    <ul class="forecast">
-      <li>
-        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
-      </li>
-      <li class="forecastTemp">
-        <span class= "forecastHigh" id="forecast-temp-high">
-          10° /
-        </span>
-        <span class="forecastLow" id="forecast-temp-low">
-          12°
-        </span>
-      </li>
-      <li>
-        <p class="style-border forecast-day"><strong>${days}</strong></p>
-      </li>
-    </ul>
-  </div> `;
-  })
+  forecast.forEach(function(forecastday, index){
+    if (index < 4) {
+      forecastHTML = forecastHTML + `
+        <section>
+          <ul class="forecast">
+            <li>
+              <img src="http://openweathermap.org/img/wn/${forecast[index].weather[0].icon}@2x.png" alt="">
+            </li>
+            <li class="forecastTemp">
+              <span class= "forecastHigh" id="forecast-temp-high">
+                ${Math.round(forecast[index].temp.max)}° /
+              </span>
+              <span class="forecastLow" id="forecast-temp-low">
+                ${Math.round(forecast[index].temp.min)}°
+              </span>
+            </li>
+            <li>
+              <p class="style-border forecast-day"><strong>${formatForecastDate(forecastday.dt*1000)}</strong></p>
+            </li>
+          </ul>
+        </section> `;
+        }})      
 
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayforecast();
+function callForecastAPI(coordinates) {
+  let lat = coordinates.lat; 
+  let lon = coordinates.lon;
+  let apiKey ="b726c0c3e5e5bc647284ff0039ec9b4a";
+  let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  console.log(apiForecastUrl);
+  axios.get(apiForecastUrl).then(displayforecast);
+}
 
 // returns info aside from temperature for daily API call 
 function displayInfo (response){
@@ -75,12 +93,12 @@ function displayInfo (response){
 
   precipitationElement.innerHTML = `HUMIDITY: ${humidity}%`
   windSpeedElement.innerHTML = `WIND SPEED: ${windSpeed} km/h`;
+  callForecastAPI(response.data.coord);
 }
 
 // display Temp of searched location using API
 function displayCitySearchTemp(response){
-  console.log(response.data);
-  console.log(response.data.weather[0].icon);
+  console.log(response.data.coord);
 
   //display current temp in "today" section
   let currentTemp = Math.round(response.data.main.temp);

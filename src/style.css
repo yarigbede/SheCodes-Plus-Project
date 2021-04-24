@@ -16,12 +16,19 @@ p {
   margin-bottom: 0;
 }
 
+section {
+  display: inline-flex;
+}
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.nowForecast {
+  display: inline;
+}
 .units {
   bottom: 10px;
   font-size: small;
@@ -108,6 +115,11 @@ ul {
   opacity: 40%;
 }
 
+.forecastDescription {
+  display: block;
+  text-align: center;
+}
+
 .middle-border {
   border-right: 5px double #1ab2a8;
 }
@@ -123,7 +135,7 @@ ul {
 }
 
 .row-2 {
-  border-bottom: 5px double #1ab2a8;
+  border-bottom: 5px solid #1ab2a8;
 }
 
 .search-bar {
@@ -161,10 +173,10 @@ ul {
   margin-bottom: 0;
 }
 
-.Today {
+.Now {
   font-weight: 800;
   line-height: 1em;
-  margin: 0 auto;
+  margin: 15px auto 0px;
 }
 
 .Today-col {

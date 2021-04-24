@@ -27,11 +27,13 @@ function formatForecastDate(timestamp){
 // HTML for forecast
 function displayforecast(response){
   console.log(response.data.daily);
-  let forecast = response.data.daily; 
+  let forecast = response.data.daily; // api section for daily forecast 
   let forecastElement = document.querySelector("#forecast-replicate");
-  
+   // for HTML "section" used as using col results in bad format as it is on the same row as the current weather temp
   let forecastHTML = ""; 
   forecast.forEach(function(forecastday, index){
+    celsiusTempForecastHigh[index] = forecast[index].temp.max;
+    celsiusTempForecastLow[index] = forecast[index].temp.min;
     if (index < 4) {
       forecastHTML = forecastHTML + `
         <section>
@@ -40,10 +42,10 @@ function displayforecast(response){
               <img src="http://openweathermap.org/img/wn/${forecast[index].weather[0].icon}@2x.png" alt="">
             </li>
             <li class="forecastTemp">
-              <span class= "forecastHigh" id="forecast-temp-high">
+              <span class= "forecastHigh" id="forecast-temp-high${index}">
                 ${Math.round(forecast[index].temp.max)}° /
               </span>
-              <span class="forecastLow" id="forecast-temp-low">
+              <span class="forecastLow" id="forecast-temp-low${index}">
                 ${Math.round(forecast[index].temp.min)}°
               </span>
             </li>
@@ -153,6 +155,16 @@ function toFahrenheit(event) {
   let currentTemp = document.querySelector("#temp-today"); //celsius
   let tempFahrenheit = Math.round((celsiusTemp * 9 / 5) + 32); //fahrenheit 
   currentTemp.innerHTML = tempFahrenheit;
+
+  // unit conversion for forecast temperatures celsius --> fahrenheit
+  for (let index = 0; index < 4; index++) {
+    let forecastTempFahrenheitHigh = Math.round((celsiusTempForecastHigh[index] * 9 / 5) + 32);
+    let forecastTempFahrenheitLow = Math.round((celsiusTempForecastLow[index] * 9 / 5) + 32);
+    let TempForecastElementHigh = document.querySelector(`#forecast-temp-high${index}`);
+    let TempForecastElementLow = document.querySelector(`#forecast-temp-low${index}`);
+    TempForecastElementHigh.innerHTML = `${forecastTempFahrenheitHigh}° /`;
+    TempForecastElementLow.innerHTML = `${forecastTempFahrenheitLow}°`;
+  }
 }
 
 function toCelsius(event) {
@@ -161,9 +173,21 @@ function toCelsius(event) {
   fahrenheitConverter.classList.replace("active", "inactive");
   let currentTemp = document.querySelector("#temp-today"); //celsius
   currentTemp.innerHTML = celsiusTemp;
+
+  // unit conversion for forecast temperatures fahrenheit --> celsius
+  for (let index = 0; index < 4; index++) {
+    let forecastTempCelsiusHigh = Math.round(celsiusTempForecastHigh[index]);
+    let forecastTempCelsiusLow = Math.round(celsiusTempForecastLow[index]);
+    let TempForecastElementHigh = document.querySelector(`#forecast-temp-high${index}`);
+    let TempForecastElementLow = document.querySelector(`#forecast-temp-low${index}`);
+    TempForecastElementHigh.innerHTML = `${forecastTempCelsiusHigh}° /`;
+    TempForecastElementLow.innerHTML = `${forecastTempCelsiusLow}°`;
+}
 }
 
 let celsiusTemp = null;
+let celsiusTempForecastHigh = [];
+let celsiusTempForecastLow = []
 let celsiusConverter = document.querySelector("#celsius");
 let fahrenheitConverter = document.querySelector("#fahrenheit");
 celsiusConverter.addEventListener("click", toCelsius);
